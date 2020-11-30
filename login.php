@@ -13,7 +13,7 @@
     
 </div>
 
-<div id="container">
+<div class="container">
     
     <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
         <input class="input-box mb25" name="username" placeholder="Username">

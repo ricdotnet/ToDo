@@ -10,3 +10,6 @@ create table todo (
     user int(11),
     foreign key (user) references users (id)
     );
+    
+insert into users values (null, 'ricardo', 123456789);
+insert into users values (null, 'adriana', 123456789);

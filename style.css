@@ -37,9 +37,10 @@ html, body {
     height: 100px;
 }
 
-#container {
+.container {
     width: 300px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     height: auto;
 }

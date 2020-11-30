@@ -2,40 +2,50 @@
 
     require("header.php");
 
-    //fetching all data from the database
-    //$results = $mysqli->query("select * from (select * from todo order by id desc limit 10)var1 order by id asc");
-    $results = $mysqli->query("select * from todo order by id desc limit 10");
-        
-            
-?>
+    ?>
 
     <div id="header">
         <!-- navbar/menu content will go here -->
 
         <?php
 
-            if(isset($_SESSION['name'])) {
-                echo "<a href='logout.php'>Logout.</a>";
-            } else {
-                echo "<a href='login.php'>Login.</a>";
-            }
+            echo "<a href='logout.php'>Logout.</a>";
 
         ?>
 
     </div>
 
-    <div id="container">
+    <div class="container">
+
+    <?php
+
+    //check if session exists
+    if(isset($_SESSION['name'])) {
+        echo "<h4>Hi ". $_SESSION['name'] .".<br>Please see below your To Do list.</h4>";
+
+        $username = $_SESSION['name'];
+
+        //fetching all data from the database
+
+        $getuser = $mysqli->query("select id from users where username = '". $username ."'");
+        $gotuser = $getuser->fetch_assoc();
+
+        $userid = $gotuser['id'];
+
+        //$results = $mysqli->query("select * from (select * from todo order by id desc limit 10)var1 order by id asc");
+        $results = $mysqli->query("select * from todo where user = '". $userid ."' order by id desc limit 10");
+            
+?>
 
         <?php
-
-            //check if session exists
-            if(isset($_SESSION['name'])) {
-                echo "<h4>Hi ". $_SESSION['name'] .".<br>Please see below your To Do list.</h4>";
 
         //no todos message
         if($results->num_rows == 0) {
             echo "<div class='error-box mb25'>You have no ToDos</div>";
         }
+
+        //id for todo display
+        $number = 1;
         
         //while loop to print todos
         while($print_results = $results->fetch_assoc()) {
@@ -46,7 +56,7 @@
             }
 
             //print todo list
-            echo "<div class='left-box'>" .$print_results['id'] . "</div><div class='right-box'>" . $print_results['todo'] . "</div>";
+            echo "<div class='left-box'>" .$number++ . "</div><div class='right-box'>" . $print_results['todo'] . "</div>";
         }
 
         ?>
@@ -69,7 +79,7 @@
                 }else{
                     
                     //if valid then post and reload
-                    $mysqli->query("insert into todo values (null, '".$todo."')");
+                    $mysqli->query("insert into todo values (null, '". $todo ."', '". $userid ."')");
 
                     //confirmation message
                     echo "<div class='confirm-box'>To Do added.... Reloading page.</div>";
@@ -88,8 +98,10 @@
 
             //if session is not started show login/register button
         } else {
-        echo "<p class='mb25'>Hey visitor.<br>If you do not have an account register one.<br>If you have you can just login.</p>";
+            echo "<div class='container mt50'>";
+        echo "<p class='mb25'>Hey visitor.<br>If you have an account please login.<br>If you don't, register.</p>";
         echo "<a href='login.php'>Login</a> | <a href='#'>Register</a>";
+            echo "</div>";
     }
 
     require("footer.php");
