@@ -11,10 +11,28 @@
 
     <div id="header">
         <!-- navbar/menu content will go here -->
+
+        <?php
+
+            if(isset($_SESSION['name'])) {
+                echo "<a href='logout.php'>Logout.</a>";
+            } else {
+                echo "<a href='login.php'>Login.</a>";
+            }
+
+        ?>
+
     </div>
 
     <div id="container">
+
         <?php
+
+            if(isset($_SESSION['name'])) {
+                echo "<h4>Hi ". $_SESSION['name'] .".<br>Please see below your To Do list.</h4>";
+            } else {
+                echo "Hey visitor. It seems that you don't have an account. Please register one.";
+            }
 
         //no todos message
         if($results->num_rows == 0) {
@@ -29,6 +47,7 @@
                 $print_results['todo'] = "empty.";
             }
 
+            //print todo list
             echo "<div class='left-box'>" .$print_results['id'] . "</div><div class='right-box'>" . $print_results['todo'] . "</div>";
         }
 
@@ -36,7 +55,7 @@
 
         <!-- input form -->
         <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
-            <input class="input-box" type="text" name="todo">
+            <input class="input-box mb25" type="text" name="todo">
             <button type="submit">Add To Do</button>
         </form>
 
