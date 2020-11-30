@@ -4,6 +4,33 @@ html, body {
     font-family: sans-serif;
 }
 
+/* margins and spaces */
+.mt25 {
+    margin-top: 25px;
+}
+.mb25 {
+    margin-bottom: 25px;
+}
+.ml25 {
+    margin-left: 25px;
+}
+.mr25 {
+    margin-right: 25px;
+}
+.mt50 {
+    margin-top: 50px;
+}
+.mb50 {
+    margin-bottom: 50px;
+}
+.ml50 {
+    margin-left: 50px;
+}
+.mr50 {
+    margin-right: 50px;
+}
+
+/* main content */
 #header {
     width: 100%;
     height: 100px;
@@ -16,6 +43,7 @@ html, body {
     height: auto;
 }
 
+/* todos css codes */
 .left-box {
     width: 25%;
     height: 40px;
@@ -29,6 +57,15 @@ html, body {
     height: 40px;
     background-color: #eee ;
     float: left;
+}
+.input-box {
+    width: 100%;
+    line-height: 50px;
+    outline: none;
+    border: none;
+    background-color: #fefefe;
+    padding-left:  15px;
+    padding-right: 15px;
 }
 
 
