@@ -28,11 +28,9 @@
 
         <?php
 
+            //check if session exists
             if(isset($_SESSION['name'])) {
                 echo "<h4>Hi ". $_SESSION['name'] .".<br>Please see below your To Do list.</h4>";
-            } else {
-                echo "Hey visitor. It seems that you don't have an account. Please register one.";
-            }
 
         //no todos message
         if($results->num_rows == 0) {
@@ -87,6 +85,12 @@
     </div>
 
 <?php
+
+            //if session is not started show login/register button
+        } else {
+        echo "<p class='mb25'>Hey visitor.<br>If you do not have an account register one.<br>If you have you can just login.</p>";
+        echo "<a href='login.php'>Login</a> | <a href='#'>Register</a>";
+    }
 
     require("footer.php");
 
