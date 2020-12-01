@@ -50,7 +50,7 @@
                 } else if(!empty($username) && (!empty($email)) && (!empty($password))) {
                     
                     //get usernames and emails from registered users and check for duplicates
-                    $check_duplicates = $mysqli->query("select * from users");
+                    $check_duplicates = $mysqli->query("select * from users where username = '$username' or email = '$email'");
                     $duplicates = $check_duplicates->fetch_assoc();
 
                     //if username is used

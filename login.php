@@ -42,7 +42,7 @@
         } else if(!empty($username) && (!empty($password))) {
             
             //check with the database
-            $results = $mysqli->query("select username from users where username = '". $username ."' and password = '". $password ."'");
+            $results = $mysqli->query("select username from users where username = '$username' and password = '$password'");
 
             if($results->num_rows == 0) {
 
