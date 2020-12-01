@@ -2,28 +2,27 @@
 
     require("header.php");
 
-    ?>
+    //check if session exists
+    if(isset($_SESSION['name'])) {
+
+?>
 
     <div id="header">
         <!-- navbar/menu content will go here -->
+        <div class="width80">
 
-        <?php
+            <?php echo "<a href='logout.php'>Logout.</a>"; ?>
 
-            echo "<a href='logout.php'>Logout.</a>";
-
-        ?>
-
+        </div>
     </div>
 
     <div class="container">
 
-    <?php
+        <?php
 
-    //check if session exists
-    if(isset($_SESSION['name'])) {
         echo "<h4>Hi ". $_SESSION['name'] .".<br>Please see below your To Do list.</h4>";
 
-        $username = $_SESSION['name'];
+        $username = $_SESSION['name']; //copy session name to $username
 
         //fetching all data from the database
 
@@ -34,10 +33,6 @@
 
         //$results = $mysqli->query("select * from (select * from todo order by id desc limit 10)var1 order by id asc");
         $results = $mysqli->query("select * from todo where user = '". $userid ."' order by id desc limit 10");
-            
-?>
-
-        <?php
 
         //no todos message
         if($results->num_rows == 0) {
@@ -52,7 +47,7 @@
 
             //if a todo is empty show empty text
             if($print_results['todo'] == "") {
-                $print_results['todo'] = "empty.";
+                $print_results['todo'] = "invalid.";
             }
 
             //print todo list
@@ -98,11 +93,13 @@
 
             //if session is not started show login/register button
         } else {
+
             echo "<div class='container mt50'>";
         echo "<p class='mb25'>Hey visitor.<br>If you have an account please login.<br>If you don't, register.</p>";
-        echo "<a href='login.php'>Login</a> | <a href='#'>Register</a>";
+        echo "<a href='login.php'>Login</a> | <a href='register.php'>Register</a>";
             echo "</div>";
     }
+    
 
     require("footer.php");
 
