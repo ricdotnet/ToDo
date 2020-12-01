@@ -3,6 +3,8 @@
 ob_start();
 session_start();
 
+$ip = $_SERVER['HTTP_CLIENT_IP'];
+
 ?>
 <html>
 

@@ -66,10 +66,15 @@
                     //if all good register the user
                     } else {
                         
-                        $mysqli->query("insert into users values (null, '$username', '$password', '$email')"); //insert into database
-                        echo "<div class='confirm-box'>User registered with success.</div>"; //show confirmation message
+                        $mysqli->query("insert into users values (null, '$username', '$password', '$email', 'firstname', 'lastname', 'city')"); //insert into database
 
-                        header("Refresh: 2; http://localhost:3000"); //redirect to index.php
+                        if($mysqli->error) {
+                            echo $mysqli->error;
+                        } else {
+
+                            echo "<div class='confirm-box'>User registered with success.</div>"; //show confirmation message
+                            header("Refresh: 2; http://localhost:3000"); //redirect to index.php
+                        }
 
                     }
 

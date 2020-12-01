@@ -23,6 +23,7 @@
 
 <?php
 
+    //posting account register system
     if($_SERVER['REQUEST_METHOD'] == "POST") {
 
         $username = $_POST['username'];

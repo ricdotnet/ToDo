@@ -2,7 +2,11 @@ create table users (
 	id int(11) primary key auto_increment,
     username varchar(255) not null unique,
     password varchar(255) not null,
-    email varchar(255) not null
+    email varchar(255) not null,
+    firstname varchar(255) not null,
+    lastname varchar(255) not null,
+    city varchar(255) not null,
+    ipaddress int unsigned
 );
 
 create table todo (
