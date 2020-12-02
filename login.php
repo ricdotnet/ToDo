@@ -17,9 +17,11 @@
     
     <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
         <input class="input-box mb25" name="username" placeholder="Username">
-        <input class="input-box mb25" name="password" placeholder="Password">
+        <input class="input-box mb25" name="password" placeholder="Password" type="password">
         <button type="submit">Login</button>
     </form>
+
+    <a href='register.php'>Register</a>
 
 <?php
 

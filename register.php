@@ -19,9 +19,11 @@
         <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>">
             <input class="input-box mb25" name="username" placeholder="Username">
             <input class="input-box mb25" name="email" placeholder="Email">
-            <input class="input-box mb25" name="password" placeholder="Password">
+            <input class="input-box mb25" name="password" placeholder="Password" type="password">
             <button type="submit">Register Account</button>
         </form>
+
+        <a href='login.php'>Login</a>
 
         <?php
 
@@ -73,7 +75,7 @@
                         } else {
 
                             echo "<div class='confirm-box'>User registered with success.</div>"; //show confirmation message
-                            header("Refresh: 2; http://localhost:3000"); //redirect to index.php
+                            header("Refresh: 2; $url"); //redirect to index.php
                         }
 
                     }

@@ -9,18 +9,13 @@
 
     <div id="header">
         <!-- navbar/menu content will go here -->
-        <div class="width80">
-
-            <?php echo "<a href='logout.php'>Logout.</a>"; ?>
-
-        </div>
     </div>
 
     <div class="container">
 
         <?php
 
-        echo "<h4>Hi ". $_SESSION['name'] .".<br>Please see below your To Do list.</h4>";
+        echo "<h4>Hi ". $_SESSION['name'] .". <a href='logout.php'>Logout.</a><br>Please see below your To Do list.</h4>";
 
         $username = $_SESSION['name']; //copy session name to $username
 
@@ -51,7 +46,7 @@
             }
 
             //print todo list
-            echo "<div class='left-box'>" .$number++ . "</div><div class='right-box'>" . $print_results['todo'] . "</div>";
+            echo "<div class='left-box'>" .$number++ . "</div><div class='right-box'>" . $print_results['todo'] . "</div><div class='hr mb25 mt25'></div>";
         }
 
         ?>
@@ -82,7 +77,7 @@
                 }
 
                 //reload the page after a second
-                header("Refresh:1; http://localhost:3000/index.php");
+                header("Refresh:1; $url");
             }
 
         ?>
@@ -95,7 +90,7 @@
         } else {
 
             echo "<div class='container mt50'>";
-        echo "<p class='mb25'>Hey visitor.<br>If you have an account please login.<br>If you don't, register.</p>";
+        echo "<p class='mb25'>Hey visitor. $ip<br>If you have an account please login.<br>If you don't, register.</p>";
         echo "<a href='login.php'>Login</a> | <a href='register.php'>Register</a>";
             echo "</div>";
     }

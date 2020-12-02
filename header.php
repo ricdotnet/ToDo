@@ -3,14 +3,13 @@
 ob_start();
 session_start();
 
-$ip = $_SERVER['HTTP_CLIENT_IP'];
-
 ?>
 <html>
 
     <?php
 
         require("mysqlconn.php");
+        require("settings.php");
 
         //variables
         $title = "To Do App with PHP";
